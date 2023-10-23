@@ -1,0 +1,41 @@
+﻿<Window x:Class="TravePal_Henrik.TravelsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravePal_Henrik"
+        mc:Ignorable="d"
+        Title="TravelsWindow" Height="450" Width="800" Background="MintCream">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Travels" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" FontSize="50" HorizontalAlignment="Center"/>
+        <Label Name="lblUsername" Content="Username" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalContentAlignment="Center" />
+
+        <ListView Name="lstTravels" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
+
+        <Button Name="btnAddTravel" Content="Add Travels" Grid.Column="6" Grid.Row="1" FontSize="20" Height="40" Margin="10"/>
+        <Button Name="btnDetails" Content="Details" Grid.Column="6" Grid.Row="2" FontSize="30" Height="45" Margin="15"/>
+        <Button Name="btnRemove" Content="Remove" Grid.Column="6" Grid.Row="3" FontSize="30" Height="45" />
+        <Button Name="btnLogout" Content="Log out" Grid.Column="6" Grid.Row="4" FontSize="30" Height="45" Margin="8"/>
+        <Button Name="btnInfo" Content="Info" Grid.Column="5" Grid.Row="1" FontSize="30" Height="45" Margin="20"/>
+        
+    </Grid>
+</Window>

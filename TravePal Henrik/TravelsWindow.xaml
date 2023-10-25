@@ -31,10 +31,10 @@
 
         <ListView Name="lstTravels" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
 
-        <Button Name="btnAddTravel" Content="Add Travels" Grid.Column="6" Grid.Row="1" FontSize="20" Height="40" Margin="10"/>
-        <Button Name="btnDetails" Content="Details" Grid.Column="6" Grid.Row="2" FontSize="30" Height="45" Margin="15"/>
+        <Button Name="btnAddTravel" Content="Add Travels" Grid.Column="6" Grid.Row="1" FontSize="20" Height="40" Margin="10" Click="btnAddTravel_Click"/>
+        <Button Name="btnDetails" Content="Details" Grid.Column="6" Grid.Row="2" FontSize="30" Height="45" Margin="15" Click="btnDetails_Click"/>
         <Button Name="btnRemove" Content="Remove" Grid.Column="6" Grid.Row="3" FontSize="30" Height="45" />
-        <Button Name="btnLogout" Content="Log out" Grid.Column="6" Grid.Row="4" FontSize="30" Height="45" Margin="8"/>
+        <Button Name="btnLogout" Content="Log out" Grid.Column="6" Grid.Row="4" FontSize="30" Height="45" Margin="8" Click="btnLogout_Click"/>
         <Button Name="btnInfo" Content="Info" Grid.Column="5" Grid.Row="1" FontSize="30" Height="45" Margin="20"/>
         
     </Grid>

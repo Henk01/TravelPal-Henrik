@@ -9,13 +9,18 @@ namespace TravePal_Henrik.Services
     {
         static List<IUser> users = new()
         {
-            new Admin("username", "password", EUCountry.Sweden)
+            //Premade admin account
+            new Admin("admin", "password", Country.Sweden),
+            //Premade user account
+            new User("user", "password", Country.Sweden)
         };
 
         internal static IUser? signedInUser = null;
 
-        internal static bool AddUser(string username, string password, EUCountry country)
+        //Create user
+        internal static bool AddUser(string username, string password, Country country)
         {
+            //If valid username add user to list
             if (ValidateUsername(username))
             {
                 User? user = new(username, password, country);
@@ -26,14 +31,17 @@ namespace TravePal_Henrik.Services
 
         }
 
+        //Remove user
         internal static void RemoveUser(IUser user)
         {
             users.Remove(user);
         }
 
+        //Login user
         internal static bool SignInUser(string username, string password)
         {
             bool userIsSignedIn = false;
+            //Log in user if input matches user in list
             foreach (var user in users)
             {
                 if (user.Username == username && user.Password == password)
@@ -46,6 +54,7 @@ namespace TravePal_Henrik.Services
             return userIsSignedIn;
         }
 
+        //Change username
         internal static bool UpdateUsername(IUser user, string newUsername)
         {
 
@@ -57,13 +66,18 @@ namespace TravePal_Henrik.Services
             return false;
         }
 
+        //Check if username is available
         private static bool ValidateUsername(string username)
         {
             bool isValid = false;
+
+            //Check if textbox is empty
             if (!string.IsNullOrEmpty(username))
             {
                 isValid = true;
             }
+
+            //Check if username already exists
             foreach (var user in users)
             {
                 if (user.Username == username)

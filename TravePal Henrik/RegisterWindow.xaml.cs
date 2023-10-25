@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using TravePal_Henrik.Enums;
 using TravePal_Henrik.Services;
 
@@ -13,13 +14,17 @@ namespace TravePal_Henrik
         {
             InitializeComponent();
 
+            foreach (Country country in Enum.GetValues(typeof(Country)))
+            {
+                comboCountry.Items.Add(country);
+            }
         }
 
+        //Create user
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
-
-            bool userIsAdded = UserManager.AddUser(txtUsername.Text, txtPassword.Password, EuropeanCountry.Sweden);
+            //Create user if input is valid
+            bool userIsAdded = UserManager.AddUser(txtUsername.Text, txtPassword.Password, Country.Sweden);
             if (userIsAdded)
             {
                 MessageBox.Show("User Added");
@@ -27,6 +32,7 @@ namespace TravePal_Henrik
                 mainWindow.Show();
                 this.Close();
             }
+            //Try again if input is invalid
             else
             {
                 MessageBox.Show("Invalid password or username, Warning");

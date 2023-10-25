@@ -14,5 +14,28 @@ namespace TravePal_Henrik
 
             lblUsername.Content = UserManager.signedInUser.Username;
         }
+
+        //Show details about travel
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow();
+            travelDetailsWindow.Show();
+            this.Close();
+        }
+
+        //Log out user
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+        {
+            AddTravelWindow addTravelWindow = new AddTravelWindow();
+            addTravelWindow.Show();
+            this.Close();
+        }
     }
 }

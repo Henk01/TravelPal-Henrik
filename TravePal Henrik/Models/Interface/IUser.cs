@@ -7,7 +7,7 @@ namespace TravePal_Henrik.Models.Interface
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public EuropeanCountry Location { get; set; }
+        public EUCountry Location { get; set; }
 
 
 

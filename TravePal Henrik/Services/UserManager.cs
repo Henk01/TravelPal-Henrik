@@ -9,12 +9,12 @@ namespace TravePal_Henrik.Services
     {
         static List<IUser> users = new()
         {
-            new Admin("username", "password", EuropeanCountry.Sweden)
+            new Admin("username", "password", EUCountry.Sweden)
         };
 
         internal static IUser? signedInUser = null;
 
-        internal static bool AddUser(string username, string password, EuropeanCountry country)
+        internal static bool AddUser(string username, string password, EUCountry country)
         {
             if (ValidateUsername(username))
             {

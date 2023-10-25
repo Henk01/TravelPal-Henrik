@@ -4,7 +4,7 @@
     {
         Russia
     }
-    internal enum EuropeanCountry
+    internal enum EUCountry
     {
         Sweden,
     }

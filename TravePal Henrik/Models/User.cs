@@ -8,10 +8,10 @@ namespace TravePal_Henrik.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public EuropeanCountry Location { get; set; }
+        public EUCountry Location { get; set; }
 
 
-        public User(string username, string password, EuropeanCountry country)
+        public User(string username, string password, EUCountry country)
         {
             Username = username;
             Password = password;

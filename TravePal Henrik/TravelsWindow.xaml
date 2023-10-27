@@ -35,7 +35,7 @@
         <Button Name="btnDetails" Content="Details" Grid.Column="6" Grid.Row="2" FontSize="30" Height="45" Margin="15" Click="btnDetails_Click"/>
         <Button Name="btnRemove" Content="Remove" Grid.Column="6" Grid.Row="3" FontSize="30" Height="45" />
         <Button Name="btnLogout" Content="Log out" Grid.Column="6" Grid.Row="4" FontSize="30" Height="45" Margin="8" Click="btnLogout_Click"/>
-        <Button Name="btnInfo" Content="Info" Grid.Column="5" Grid.Row="1" FontSize="30" Height="45" Margin="20"/>
+        <Button Name="btnInfo" Content="Info" Grid.Column="5" Grid.Row="1" FontSize="30" Height="45" Margin="20" Click="btnInfo_Click"/>
         
     </Grid>
 </Window>

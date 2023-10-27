@@ -50,6 +50,7 @@
         <Button Name="btnReturn" Content="Return" Grid.Column="1" Grid.Row="6" FontSize="30" Height="60" Click="btnReturn_Click"/>
         <Button Name="btnAddItem" Content="Add Item" Grid.Column="8" Grid.Row="2" FontSize="25" Height="50" VerticalAlignment="Bottom"/>
         <Button Name="btnPackList" Content="View Items" Grid.Column="3" Grid.Row="6" FontSize="20" Height="50"/>
+        <Button Name="btnAdd" Content="Add Travel" Grid.Column="6" Grid.Row="6" FontSize="20" Height="50" />
 
         <CheckBox Name="checkDocument" Grid.Row="4" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 

@@ -1,0 +1,34 @@
+﻿<Window x:Class="TravePal_Henrik.TravelPalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravePal_Henrik"
+        mc:Ignorable="d"
+        Title="TravelPalWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="INFO" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="50"/>
+        <Label Content="HOW TO USE:" Grid.Row="3" Grid.Column="1" FontSize="35"/>
+
+        <Button Name="btnReturn" Content="Return" Grid.Column="1" Grid.Row="1" FontSize="30" Background="Aqua" Height="50" Width="120" Click="btnReturn_Click"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" TextWrapping="Wrap" FontSize="20" Text="The app works by creating a user and then adding information about your destination and what you need to pack. It will then figure out what documents are needed. You will be able to see your planned trips when you log back in."/>
+        <TextBlock Text="TravelPal is a new, innovative way to keep an eye on upcoming travels. The company is based in Landskrona, south Sweden and was created because we noticed there was a lack of services that keep track of your travels and all the details ilke required documents and packlist" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" FontSize="15"/>
+    </Grid>
+</Window>

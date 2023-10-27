@@ -6,7 +6,7 @@ namespace TravePal_Henrik.Models
     {
         public bool AllInclusive { get; set; }
 
-        public Vacation(bool allInclusive, string destination, int travelers, Country country) : base(destination, travelers, country)
+        public Vacation(bool allInclusive, string city, int travelers, Country destination) : base(city, travelers, destination)
         {
             AllInclusive = allInclusive;
         }
@@ -14,7 +14,7 @@ namespace TravePal_Henrik.Models
         //Print travelinfo
         internal override string GetInfo()
         {
-            return $"Destination: {Destination}, {Travelers} travelers from {Country}, allinclusive: {AllInclusive}";
+            return $"Destination: {City}, {Travelers} travelers, allinclusive: {AllInclusive}";
         }
     }
 }

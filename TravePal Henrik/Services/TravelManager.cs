@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TravePal_Henrik.Enums;
 using TravePal_Henrik.Models;
 
 namespace TravePal_Henrik.Services
@@ -8,9 +9,16 @@ namespace TravePal_Henrik.Services
         static List<Travel> travels = new();
 
         //Add travel
-        static internal void AddTravel(Travel travel)
+        internal static void AddTravel(bool allInclusive, string meetingDetails, Country destination, string city, int travelers, string tripType)
         {
-            travels.Add(travel);
+            if (tripType == "Vacation")
+            {
+                Vacation newVacation = new(allInclusive, city, travelers, destination);
+            }
+            else if (tripType == "WorkTrip")
+            {
+                WorkTrip newWorkTrip = new(meetingDetails, city, travelers, destination);
+            }
         }
 
         //Remove travel

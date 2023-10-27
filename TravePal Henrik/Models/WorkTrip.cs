@@ -6,7 +6,7 @@ namespace TravePal_Henrik.Models
     {
         public string MeetingDetails { get; set; }
 
-        public WorkTrip(string meetingDetails, string destination, int travelers, Country country) : base(destination, travelers, country)
+        public WorkTrip(string meetingDetails, string city, int travelers, Country destination) : base(city, travelers, destination)
         {
             MeetingDetails = meetingDetails;
         }
@@ -14,7 +14,7 @@ namespace TravePal_Henrik.Models
         //Print travelinfo
         internal override string GetInfo()
         {
-            return $"Destination: {Destination}, {Travelers} travelers from {Country}, Meetingdetails: {MeetingDetails}";
+            return $"Destination: {City}, {Travelers} travelers, Meetingdetails: {MeetingDetails}";
         }
     }
 }

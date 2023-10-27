@@ -4,20 +4,20 @@ namespace TravePal_Henrik.Models
 {
     internal abstract class Travel
     {
-        public string Destination { get; set; }
+        public string City { get; set; }
         public int Travelers { get; set; }
         public Country Country { get; set; }
 
-        public Travel(string destination, int travelers, Country country)
+        public Travel(string city, int travelers, Country destination)
         {
-            Destination = destination;
+            City = city;
             Travelers = travelers;
-            Country = country;
+            Country = destination;
         }
 
         internal virtual string GetInfo()
         {
-            return $"Destination: {Destination}, {Travelers} travelers from {Country}";
+            return $"Destination: {City}, {Travelers} travelers from {Country}";
         }
     }
 }

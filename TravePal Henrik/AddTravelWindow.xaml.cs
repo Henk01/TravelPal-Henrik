@@ -36,5 +36,10 @@ namespace TravePal_Henrik
             travelsWindow.Show();
             this.Close();
         }
+
+        //private void btnAdd_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bool isTripAdded = TravelManager.AddTravel();
+        //}
     }
 }

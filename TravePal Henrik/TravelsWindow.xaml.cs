@@ -37,5 +37,12 @@ namespace TravePal_Henrik
             addTravelWindow.Show();
             this.Close();
         }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            TravelPalWindow travelPalWindow = new TravelPalWindow();
+            travelPalWindow.Show();
+            this.Close();
+        }
     }
 }

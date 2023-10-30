@@ -362,6 +362,7 @@ namespace TravePal_Henrik.Enums
         Cyprus,
         [Display(Name = "San Marino")]
         San_Marino,
-        Malta
+        Malta,
+        Vatican
     }
 }

@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using TravePal_Henrik.Enums;
+using TravePal_Henrik.Models;
+using TravePal_Henrik.Models.Interface;
+using TravePal_Henrik.Services;
 
 namespace TravePal_Henrik
 {
@@ -9,6 +13,8 @@ namespace TravePal_Henrik
     /// </summary>
     public partial class AddTravelWindow : Window
     {
+
+        public List<IPackingListItem> PackingItems { get; set; } = new List<IPackingListItem>();
         public AddTravelWindow()
         {
             InitializeComponent();
@@ -16,6 +22,14 @@ namespace TravePal_Henrik
             //Add type of trip to combobox
             cmbTripType.Items.Add("Work trip");
             cmbTripType.Items.Add("Vacation");
+
+
+            foreach (var item in PackingItems)
+            {
+                lstPackList.Items.Add(item);
+            }
+
+            //lstPackList.ItemsSource = PackingItems;
 
             //Add number of travelers to combobox
             for (int i = 1; i <= 10; i++)
@@ -36,6 +50,7 @@ namespace TravePal_Henrik
             }
         }
 
+        //Go back to TravelWindow
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             TravelsWindow travelsWindow = new TravelsWindow();
@@ -43,6 +58,7 @@ namespace TravePal_Henrik
             this.Close();
         }
 
+        //Choose type of trip
         private void cmbTripType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             //If Worktrip show meetingdetails
@@ -62,6 +78,7 @@ namespace TravePal_Henrik
 
         }
 
+        //Show pack list
         private void btnPackList_Click(object sender, RoutedEventArgs e)
         {
             PackListWindow packListWindow = new PackListWindow();
@@ -69,16 +86,97 @@ namespace TravePal_Henrik
             this.Close();
         }
 
-        private void checkDoc_Checked(object sender, RoutedEventArgs e)
+        //Pick if its travel document
+        private void checkDoc_Click(object sender, RoutedEventArgs e)
         {
-            lblAmount.Visibility = Visibility.Hidden;
-            cmbAmount.Visibility = Visibility.Hidden;
-            checkRequired.Visibility = Visibility.Visible;
+            //If its travel document show required
+            if ((bool)checkDoc.IsChecked!)
+            {
+                lblAmount.Visibility = Visibility.Hidden;
+                cmbAmount.Visibility = Visibility.Hidden;
+                checkRequired.Visibility = Visibility.Visible;
+            }
+            //If its not traveldocument show amount of items to add
+            else
+            {
+                lblAmount.Visibility = Visibility.Visible;
+                cmbAmount.Visibility = Visibility.Visible;
+                checkRequired.Visibility = Visibility.Hidden;
+            }
+
+
         }
 
-        //private void btnAdd_Click(object sender, RoutedEventArgs e)
-        //{
-        //    bool isTripAdded = TravelManager.AddTravel();
-        //}
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //IUser u = UserManager.signedInUser;
+            //User user = (User)u as User;
+
+            bool City = txtCity.Text.Trim().Length > 0;
+            bool Travelers = cmbTravelers.SelectedIndex != -1;
+            bool Country = cmbCountry.SelectedIndex != -1;
+            bool TripType = cmbTripType.SelectedIndex != -1;
+            bool MeetingDet = string.IsNullOrEmpty(txtMeetingDetails.Text);
+
+            if (City && Travelers && Country && TripType)
+            {
+                if (cmbTripType.SelectedItem == "Work trip" && string.IsNullOrEmpty(txtMeetingDetails.Text))
+                {
+                    MessageBox.Show("Please put in meeting details", "Error");
+                    return;
+                }
+                Country selectedCountry = (Country)cmbCountry.SelectedItem;
+                if (cmbTripType.SelectedItem == "Vacation")
+                {
+                    Travel travel = TravelManager.CreateTravel((bool)checkAllInc.IsChecked, (Country)cmbCountry.SelectedItem, txtCity.Text, int.Parse(cmbTravelers.SelectedItem.ToString()), (string)cmbTripType.SelectedItem, new List<IPackingListItem>(PackingItems));
+                    User user = (User)UserManager.signedInUser;
+                    user.Travels.Add(travel);
+                    PackingItems.Clear();
+
+                }
+                if (cmbTripType.SelectedItem == "Work trip")
+                {
+                    Travel travel = TravelManager.CreateTravel(txtMeetingDetails.Text, (Country)cmbCountry.SelectedItem, txtCity.Text, int.Parse(cmbTravelers.SelectedItem.ToString()), (string)cmbTripType.SelectedItem, new List<IPackingListItem>(PackingItems));
+                    User user = (User)UserManager.signedInUser;
+                    user.Travels.Add(travel);
+                    PackingItems.Clear();
+                }
+
+                TravelsWindow travelsWindow = new TravelsWindow();
+                travelsWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please put in all info", "Error");
+
+            }
+
+        }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPackList.Text))
+            {
+                MessageBox.Show("Add item in list", "Error");
+            }
+            if ((bool)checkDoc.IsChecked)
+            {
+                IPackingListItem item = PackinItemManager.AddPackItem(txtPackList.Text, (bool)checkRequired.IsChecked);
+                PackingItems.Add(item);
+                txtPackList.Clear();
+                checkRequired.IsChecked = false;
+            }
+            else
+            {
+                IPackingListItem item = PackinItemManager.AddPackItem(txtPackList.Text, int.Parse(cmbAmount.SelectedItem.ToString()));
+                PackingItems.Add(item);
+                lstPackList.Items.Add(item);
+                txtPackList.Clear();
+                cmbAmount.SelectedIndex = -1;
+            }
+
+
+        }
     }
 }

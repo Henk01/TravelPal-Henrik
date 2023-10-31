@@ -29,7 +29,14 @@
         <Label Content="Travels" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" FontSize="50" HorizontalAlignment="Center"/>
         <Label Name="lblUsername" Content="Username" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" VerticalContentAlignment="Center" />
 
-        <ListView Name="lstTravels" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
+        
+        <ListView Name="lstTravels" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Country}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <Button Name="btnAddTravel" Content="Add Travels" Grid.Column="6" Grid.Row="1" FontSize="20" Height="40" Margin="10" Click="btnAddTravel_Click"/>
         <Button Name="btnDetails" Content="Details" Grid.Column="6" Grid.Row="2" FontSize="30" Height="45" Margin="15" Click="btnDetails_Click"/>

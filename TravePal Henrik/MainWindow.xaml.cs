@@ -11,6 +11,7 @@ namespace TravePal_Henrik
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         //Open register window
@@ -21,7 +22,7 @@ namespace TravePal_Henrik
             this.Close();
         }
 
-
+        //Log in user
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             bool userLoggedIn = UserManager.SignInUser(txtUsername.Text, txtPassword.Password);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravePal_Henrik"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="600" Width="900" Background="BlanchedAlmond">
+        Title="AddTravelWindow" Height="800" Width="900" Background="BlanchedAlmond">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -27,6 +27,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -36,7 +37,7 @@
         <Label Content="Travelers:" Grid.Row="4" Grid.Column="1" FontSize="20" VerticalAlignment="Center"/>
         <Label Content="Type of trip:" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" FontSize="30" VerticalAlignment="Center"/>
         <Label Content="Item to pack:" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30"/>
-        <Label Name="lblMeeting" Content="Meeting Details:" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Margin="20" FontSize="20" Visibility="Hidden"/>
+        <Label Name="lblMeeting" Content="Meeting Details:" Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" Margin="20" FontSize="20" Visibility="Hidden"/>
         <Label Name="lblAmount" Content="Amount:" Grid.Row="3" Grid.Column="7" HorizontalAlignment="Right" FontSize="25" VerticalAlignment="Center"/>
 
 
@@ -48,17 +49,26 @@
 
         <TextBox Name="txtCity" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Height="60"/>
         <TextBox Name="txtPackList" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Height="60"/>
-        <TextBox Name="txtMeetingDetails" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="2" Visibility="Hidden"/>
+        <TextBox Name="txtMeetingDetails" Grid.Row="7" Grid.Column="7" Grid.ColumnSpan="2" Visibility="Hidden"/>
         
         
         <Button Name="btnReturn" Content="Return" Grid.Column="1" Grid.Row="6" FontSize="30" Height="60" Click="btnReturn_Click"/>
-        <Button Name="btnAddItem" Content="Add Item" Grid.Column="8" Grid.Row="1" FontSize="25" Height="50" VerticalAlignment="Bottom"/>
+        <Button Name="btnAddItem" Content="Add Item" Grid.Column="8" Grid.Row="1" FontSize="25" Height="50" VerticalAlignment="Bottom" Click="btnAddItem_Click"/>
         <Button Name="btnPackList" Content="View Items" Grid.Column="3" Grid.Row="6" FontSize="20" Height="50" Click="btnPackList_Click"/>
-        <Button Name="btnAdd" Content="Add Travel" Grid.Column="6" Grid.Row="6" FontSize="20" Height="50" />
+        <Button Name="btnAdd" Content="Add Travel" Grid.Column="5" Grid.Row="6" FontSize="20" Height="50" Click="btnAdd_Click"/>
 
-        <CheckBox Name="checkAllInc" Content="All Inclusive" FontSize="15"  Grid.Row="5" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
-        <CheckBox Name="checkDoc" Content="Travel Document" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" Margin="10" Checked="checkDoc_Checked"/>
+        <CheckBox Name="checkAllInc" Content="All Inclusive" IsThreeState="False" FontSize="15"  Grid.Row="5" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <CheckBox Name="checkDoc" Content="Travel Document" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" Margin="10" Click="checkDoc_Click"/>
         <CheckBox Name="checkRequired" Content="Required" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2" FontSize="30" Visibility="Hidden"/>
+
+        <!--<ListView Name="lstPackList" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="10"/>-->
+        <ListView Name="lstPackList" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
 

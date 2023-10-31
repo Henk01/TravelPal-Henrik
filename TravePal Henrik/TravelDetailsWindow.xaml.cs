@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using TravePal_Henrik.Models;
+using TravePal_Henrik.Models.Interface;
 
 namespace TravePal_Henrik
 {
@@ -7,9 +9,17 @@ namespace TravePal_Henrik
     /// </summary>
     public partial class TravelDetailsWindow : Window
     {
-        public TravelDetailsWindow()
+        internal Travel ChoosedTravel { get; set; }
+        internal TravelDetailsWindow(Travel travel)
         {
             InitializeComponent();
+            ChoosedTravel = travel;
+
+            lstTripInfo.Items.Add(ChoosedTravel.GetInfo());
+            foreach (IPackingListItem item in ChoosedTravel.PackItems)
+            {
+                lstPackList.Items.Add(item.GetInfo());
+            }
         }
 
         //Return to travel overview

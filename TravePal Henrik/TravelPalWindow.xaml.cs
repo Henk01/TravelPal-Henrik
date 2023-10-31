@@ -12,6 +12,7 @@ namespace TravePal_Henrik
             InitializeComponent();
         }
 
+        //Return to TravelsWindow
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             TravelsWindow travelsWindow = new TravelsWindow();

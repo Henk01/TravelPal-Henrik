@@ -14,6 +14,7 @@ namespace TravePal_Henrik
         {
             InitializeComponent();
 
+            //Put countries in combobox
             foreach (Country country in Enum.GetValues(typeof(Country)))
             {
                 comboCountry.Items.Add(country);

@@ -12,10 +12,12 @@ namespace TravePal_Henrik
             InitializeComponent();
         }
 
+        //Return to AddTravelsWindow
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             AddTravelWindow addTravelWindow = new AddTravelWindow();
-
+            addTravelWindow.Show();
+            this.Close();
         }
     }
 }

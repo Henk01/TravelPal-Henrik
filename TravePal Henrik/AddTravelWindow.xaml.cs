@@ -23,13 +23,11 @@ namespace TravePal_Henrik
             cmbTripType.Items.Add("Work trip");
             cmbTripType.Items.Add("Vacation");
 
-
+            //Put items in packlist
             foreach (var item in PackingItems)
             {
                 lstPackList.Items.Add(item);
             }
-
-            //lstPackList.ItemsSource = PackingItems;
 
             //Add number of travelers to combobox
             for (int i = 1; i <= 10; i++)

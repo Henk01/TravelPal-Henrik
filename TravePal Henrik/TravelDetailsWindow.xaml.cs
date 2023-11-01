@@ -15,7 +15,10 @@ namespace TravePal_Henrik
             InitializeComponent();
             ChoosedTravel = travel;
 
+            //Add selected trip to details window
             lstTripInfo.Items.Add(ChoosedTravel.GetInfo());
+
+            //Add items to packing list
             foreach (IPackingListItem item in ChoosedTravel.PackItems)
             {
                 lstPackList.Items.Add(item.GetInfo());

@@ -1,4 +1,5 @@
-﻿using TravePal_Henrik.Enums;
+﻿using System.Collections.Generic;
+using TravePal_Henrik.Enums;
 using TravePal_Henrik.Models.Interface;
 
 namespace TravePal_Henrik.Models
@@ -10,6 +11,8 @@ namespace TravePal_Henrik.Models
         public string Password { get; set; }
         public Country Location { get; set; }
 
+        public List<Travel> Travels { get; set; }
+        //Admin Ctor
         public Admin(string username, string password, Country country)
         {
             Username = username;

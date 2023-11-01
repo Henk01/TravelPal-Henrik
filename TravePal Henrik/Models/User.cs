@@ -11,6 +11,7 @@ namespace TravePal_Henrik.Models
 
         public Country Location { get; set; }
 
+        //Add travels to new users
         public List<Travel> Travels { get; set; } = new();
 
         public User(string username, string password, Country country)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using TravePal_Henrik.Models;
 using TravePal_Henrik.Services;
 
@@ -22,16 +23,38 @@ namespace TravePal_Henrik
             {
                 User user = (User)UserManager.signedInUser;
 
+                foreach (Travel travel in ((User)UserManager.signedInUser).Travels)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Tag = travel;
+                    item.Content = new { Country = travel.Country };
+
+                    lstTravels.Items.Add(item);
+                }
 
                 lstTravels.SelectedIndex = 0;
-                lstTravels.ItemsSource = user.Travels;
+            }
+            else if (UserManager.signedInUser is Admin)
+            {
+
+                List<Travel> allTrips = new();
+                allTrips = UserManager.GetAllTrips();
+
+                foreach (Travel travel in allTrips)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Tag = travel;
+                    item.Content = new { Country = travel.Country };
+
+                    lstTravels.Items.Add(item);
+                }
             }
         }
 
         //Show details about travel
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            Travel? travel = lstTravels.SelectedItem as Travel;
+            Travel? travel = (Travel)((ListViewItem)lstTravels.SelectedItem).Tag;
 
             TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travel);
             travelDetailsWindow.Show();

@@ -1,9 +1,10 @@
 ﻿namespace TravePal_Henrik.Models.Interface
 {
-    internal interface IPackingListItem
+    public interface IPackingListItem
     {
         public string Name { get; set; }
 
+        public string GetInfo();
 
     }
 }

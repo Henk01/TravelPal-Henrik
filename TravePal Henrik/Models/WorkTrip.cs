@@ -1,4 +1,6 @@
-﻿using TravePal_Henrik.Enums;
+﻿using System.Collections.Generic;
+using TravePal_Henrik.Enums;
+using TravePal_Henrik.Models.Interface;
 
 namespace TravePal_Henrik.Models
 {
@@ -6,7 +8,7 @@ namespace TravePal_Henrik.Models
     {
         public string MeetingDetails { get; set; }
 
-        public WorkTrip(string meetingDetails, string city, int travelers, Country destination) : base(city, travelers, destination)
+        public WorkTrip(string meetingDetails, string city, int travelers, Country destination, List<IPackingListItem> packItems) : base(city, travelers, destination, packItems)
         {
             MeetingDetails = meetingDetails;
         }

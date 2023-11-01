@@ -54,14 +54,12 @@
         
         <Button Name="btnReturn" Content="Return" Grid.Column="1" Grid.Row="6" FontSize="30" Height="60" Click="btnReturn_Click"/>
         <Button Name="btnAddItem" Content="Add Item" Grid.Column="8" Grid.Row="1" FontSize="25" Height="50" VerticalAlignment="Bottom" Click="btnAddItem_Click"/>
-        <Button Name="btnPackList" Content="View Items" Grid.Column="3" Grid.Row="6" FontSize="20" Height="50" Click="btnPackList_Click"/>
-        <Button Name="btnAdd" Content="Add Travel" Grid.Column="5" Grid.Row="6" FontSize="20" Height="50" Click="btnAdd_Click"/>
+        <Button Name="btnAdd" Content="Add Travel" Grid.Column="4" Grid.Row="6" FontSize="20" Height="50" Click="btnAdd_Click"/>
 
-        <CheckBox Name="checkAllInc" Content="All Inclusive" IsThreeState="False" FontSize="15"  Grid.Row="5" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <CheckBox Name="checkAllInc" Content="All Inclusive" IsThreeState="False" FontSize="15"  Grid.Row="7" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
         <CheckBox Name="checkDoc" Content="Travel Document" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" Margin="10" Click="checkDoc_Click"/>
         <CheckBox Name="checkRequired" Content="Required" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2" FontSize="30" Visibility="Hidden"/>
 
-        <!--<ListView Name="lstPackList" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="10"/>-->
         <ListView Name="lstPackList" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="10">
             <ListView.View>
                 <GridView>
@@ -69,8 +67,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using TravePal_Henrik.Models;
 using TravePal_Henrik.Services;
 
@@ -59,6 +60,11 @@ namespace TravePal_Henrik
             TravelPalWindow travelPalWindow = new TravelPalWindow();
             travelPalWindow.Show();
             this.Close();
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            //TravelManager.RemoveTravel();
         }
     }
 }

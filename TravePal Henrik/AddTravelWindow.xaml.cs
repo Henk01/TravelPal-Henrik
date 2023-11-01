@@ -78,13 +78,6 @@ namespace TravePal_Henrik
 
         }
 
-        //Show pack list
-        private void btnPackList_Click(object sender, RoutedEventArgs e)
-        {
-            PackListWindow packListWindow = new PackListWindow();
-            packListWindow.Show();
-            this.Close();
-        }
 
         //Pick if its travel document
         private void checkDoc_Click(object sender, RoutedEventArgs e)
@@ -109,18 +102,16 @@ namespace TravePal_Henrik
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //IUser u = UserManager.signedInUser;
-            //User user = (User)u as User;
 
             bool City = txtCity.Text.Trim().Length > 0;
             bool Travelers = cmbTravelers.SelectedIndex != -1;
             bool Country = cmbCountry.SelectedIndex != -1;
             bool TripType = cmbTripType.SelectedIndex != -1;
-            bool MeetingDet = string.IsNullOrEmpty(txtMeetingDetails.Text);
+            bool MeetingDet = string.IsNullOrWhiteSpace(txtMeetingDetails.Text);
 
             if (City && Travelers && Country && TripType)
             {
-                if (cmbTripType.SelectedItem == "Work trip" && string.IsNullOrEmpty(txtMeetingDetails.Text))
+                if (cmbTripType.SelectedItem == "Work trip" && string.IsNullOrWhiteSpace(txtMeetingDetails.Text))
                 {
                     MessageBox.Show("Please put in meeting details", "Error");
                     return;
@@ -154,19 +145,24 @@ namespace TravePal_Henrik
 
         }
 
+        //Add item to packlist
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
+            //If there is no item show warning
             if (string.IsNullOrWhiteSpace(txtPackList.Text))
             {
                 MessageBox.Show("Add item in list", "Error");
             }
+            //Add Traveldocument to list
             if ((bool)checkDoc.IsChecked)
             {
                 IPackingListItem item = PackinItemManager.AddPackItem(txtPackList.Text, (bool)checkRequired.IsChecked);
                 PackingItems.Add(item);
+                lstPackList.Items.Add(item);
                 txtPackList.Clear();
                 checkRequired.IsChecked = false;
             }
+            //Add otheritem to list
             else
             {
                 IPackingListItem item = PackinItemManager.AddPackItem(txtPackList.Text, int.Parse(cmbAmount.SelectedItem.ToString()));

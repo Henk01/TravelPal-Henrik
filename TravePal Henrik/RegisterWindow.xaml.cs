@@ -24,8 +24,14 @@ namespace TravePal_Henrik
         //Create user
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+
+            if (comboCountry.SelectedIndex == -1)
+                return;
+
+            Country country = (Country)comboCountry.SelectedValue;
+
             //Create user if input is valid
-            bool userIsAdded = UserManager.AddUser(txtUsername.Text, txtPassword.Password, Country.Sweden);
+            bool userIsAdded = UserManager.AddUser(txtUsername.Text, txtPassword.Password, country);
             if (userIsAdded)
             {
                 MessageBox.Show("User Added");
@@ -42,3 +48,4 @@ namespace TravePal_Henrik
         }
     }
 }
+

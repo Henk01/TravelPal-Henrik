@@ -33,6 +33,7 @@ namespace TravePal_Henrik
 
                 lstTravels.SelectedIndex = 0;
             }
+            //If user is admin show all trips in listview
             else if (UserManager.signedInUser is Admin)
             {
 
@@ -46,6 +47,7 @@ namespace TravePal_Henrik
         //Show details about travel
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            //If trip is selected open DetailsWindow
             if (lstTravels.SelectedIndex != -1)
             {
                 Travel? travel = (Travel)((ListViewItem)lstTravels.SelectedItem).Tag;
@@ -54,6 +56,7 @@ namespace TravePal_Henrik
                 travelDetailsWindow.Show();
                 this.Close();
             }
+            //If no trip is selected show warning
             else
             {
                 MessageBox.Show("Pick a trip to show details", "Problem");

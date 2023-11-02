@@ -18,47 +18,47 @@ namespace TravePal_Henrik
             //Change label to logged in user username
             lblUsername.Content = UserManager.signedInUser.Username;
 
+            if (UserManager.signedInUser.Username == "admin")
+            {
+                btnAddTravel.Visibility = Visibility.Hidden;
+            }
+
+
             //Show users trips in listview
             if (UserManager.signedInUser.GetType() == typeof(User))
             {
                 User user = (User)UserManager.signedInUser;
 
-                foreach (Travel travel in ((User)UserManager.signedInUser).Travels)
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.Tag = travel;
-                    item.Content = new { Country = travel.Country };
-
-                    lstTravels.Items.Add(item);
-                }
+                lstTravels.ItemsSource = ((User)UserManager.signedInUser).Travels;
 
                 lstTravels.SelectedIndex = 0;
             }
             else if (UserManager.signedInUser is Admin)
             {
 
+
                 List<Travel> allTrips = new();
                 allTrips = UserManager.GetAllTrips();
-
-                foreach (Travel travel in allTrips)
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.Tag = travel;
-                    item.Content = new { Country = travel.Country };
-
-                    lstTravels.Items.Add(item);
-                }
+                lstTravels.ItemsSource = allTrips;
             }
         }
 
         //Show details about travel
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            Travel? travel = (Travel)((ListViewItem)lstTravels.SelectedItem).Tag;
+            if (lstTravels.SelectedIndex != -1)
+            {
+                Travel? travel = (Travel)((ListViewItem)lstTravels.SelectedItem).Tag;
 
-            TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travel);
-            travelDetailsWindow.Show();
-            this.Close();
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travel);
+                travelDetailsWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Pick a trip to show details", "Problem");
+            }
+
         }
 
         //Log out user
@@ -87,7 +87,19 @@ namespace TravePal_Henrik
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            //TravelManager.RemoveTravel();
+            Travel travel = lstTravels.SelectedItem as Travel;
+            if (UserManager.signedInUser is User)
+            {
+                ((User)UserManager.signedInUser).Travels.Remove(travel);
+                lstTravels.ItemsSource = UserManager.GetAllTrips();
+            }
+            else if (UserManager.signedInUser is Admin)
+            {
+                UserManager.AdminRemoveTravel(travel);
+                lstTravels.ItemsSource = UserManager.GetAllTrips();
+            }
+
+
         }
     }
 }

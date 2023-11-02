@@ -7,7 +7,7 @@ namespace TravePal_Henrik.Services
 {
     internal static class TravelManager
     {
-        static List<Travel> travels = new();
+        //static List<Travel> travels = new();
 
         //Add vacation
         internal static Travel CreateTravel(bool allInclusive, Country destination, string city, int travelers, string tripType, List<IPackingListItem> packItems)
@@ -29,10 +29,5 @@ namespace TravePal_Henrik.Services
 
         }
 
-        //Remove travel
-        static internal void RemoveTravel(Travel travel)
-        {
-            travels.Remove(travel);
-        }
     }
 }

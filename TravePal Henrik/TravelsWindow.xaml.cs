@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using TravePal_Henrik.Models;
 using TravePal_Henrik.Services;
 
@@ -29,7 +28,8 @@ namespace TravePal_Henrik
             {
                 User user = (User)UserManager.signedInUser;
 
-                lstTravels.ItemsSource = ((User)UserManager.signedInUser).Travels;
+                lstTravels.ItemsSource = user.Travels;
+
 
                 lstTravels.SelectedIndex = 0;
             }
@@ -50,7 +50,7 @@ namespace TravePal_Henrik
             //If trip is selected open DetailsWindow
             if (lstTravels.SelectedIndex != -1)
             {
-                Travel? travel = (Travel)((ListViewItem)lstTravels.SelectedItem).Tag;
+                Travel? travel = (Travel)lstTravels.SelectedItem;
 
                 TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travel);
                 travelDetailsWindow.Show();
